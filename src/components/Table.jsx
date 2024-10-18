@@ -48,7 +48,7 @@ export default function Table({ allData, setAllData }) {
                     key={id}
                     onContextMenu={(e) => {
                       e.preventDefault();
-                      console.log(id);
+
                       menu(id, e);
                     }}
                   >

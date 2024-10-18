@@ -4,11 +4,12 @@ import Table from "./components/Table";
 import { edit } from "./context/edit";
 function App() {
   const [allData, setAllData] = useState([]);
-  const [editData, setEditData] = useState([]);
+  const [editData, setEditData] = useState([{}]);
+  const [au, setAu] = useState("add");
+
   useEffect(() => {
     if (allData.length !== 0) {
       localStorage.setItem("L-data", JSON.stringify(allData));
-      console.log(0);
     }
   }, [allData]);
   useEffect(() => {
@@ -16,8 +17,9 @@ function App() {
   }, []);
 
   return (
-    <edit.Provider value={{ editData, setEditData }}>
-      <Form setAllData={setAllData} />
+    <edit.Provider value={{ editData, setEditData, au, setAu }}>
+      <Form setAllData={setAllData} allData={allData} />
+
       <Table allData={allData} setAllData={setAllData} />
     </edit.Provider>
   );
